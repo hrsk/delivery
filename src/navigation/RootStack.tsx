@@ -1,3 +1,4 @@
+import { CalculationStack } from '@/navigation/CalculationStack';
 import { MainTabs } from '@/navigation/MainTabs';
 import { Login } from '@/screens/login/Login';
 
@@ -11,6 +12,7 @@ export const RootStack = createNativeStackNavigator({
   screens: {
     Login: Login,
     MainTabs: MainTabs,
+    CalculationStack: CalculationStack,
   },
 });
 

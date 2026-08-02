@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from 'react-native';
-import { style } from './Calculation.styles';
+import { styles } from './Calculation.styles';
 
 import { Button } from '@/components';
 
 export const Calculation = () => {
   const navigate = useNavigation();
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Text>Calculation delivery</Text>
 
       <View />
@@ -16,6 +16,12 @@ export const Calculation = () => {
           navigate.navigate('Login');
         }}
         label="Go to login"
+      />
+      <Button
+        onPress={() => {
+          navigate.navigate('CalculationStack', { screen: 'CountryPicker' });
+        }}
+        label="Pick country"
       />
     </View>
   );
