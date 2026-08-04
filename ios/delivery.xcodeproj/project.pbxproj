@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0667DF0F5F3041E1A1ED3450 /* NunitoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 233D3DD831C84BB6AFD751A6 /* NunitoRegular.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		21305EFD06344955B6DF46FF /* NunitoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E26284C51CAF4BBAB7232A1E /* NunitoBold.ttf */; };
+		323DAE2D71DB412CBB3A7255 /* NunitoExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9F95DBDE26A4BF98B4D7246 /* NunitoExtraBold.ttf */; };
+		3B0941FE6A1BE2798F4BC24E /* libPods-delivery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E5FC8DAB20AFE293A0E063 /* libPods-delivery.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BD67457CFA1D5EEB63F46898 /* libPods-delivery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B4FE3D543A8399E7E76D1C /* libPods-delivery.a */; };
+		84A935C0635D4DF0841ED24F /* NunitoMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405FD044351E4A0C8A7598C5 /* NunitoMedium.ttf */; };
+		90EC56F326EE416A9EDAB5A1 /* NunitoSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 637E7D935AD64BA5B4D797A9 /* NunitoSemiBold.ttf */; };
 		C902F8CC009E2EFA194F6E48 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -19,11 +24,16 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = delivery/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = delivery/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = delivery/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		32B4FE3D543A8399E7E76D1C /* libPods-delivery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-delivery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		346A1EA680E7AD5135A3BFF6 /* Pods-delivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delivery.release.xcconfig"; path = "Target Support Files/Pods-delivery/Pods-delivery.release.xcconfig"; sourceTree = "<group>"; };
-		37458E7BB1718C95C7FF052B /* Pods-delivery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delivery.debug.xcconfig"; path = "Target Support Files/Pods-delivery/Pods-delivery.debug.xcconfig"; sourceTree = "<group>"; };
+		233D3DD831C84BB6AFD751A6 /* NunitoRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoRegular.ttf; path = ../src/assets/fonts/NunitoRegular.ttf; sourceTree = "<group>"; };
+		405FD044351E4A0C8A7598C5 /* NunitoMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoMedium.ttf; path = ../src/assets/fonts/NunitoMedium.ttf; sourceTree = "<group>"; };
+		570FAF77C2CEEA7141448262 /* Pods-delivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delivery.release.xcconfig"; path = "Target Support Files/Pods-delivery/Pods-delivery.release.xcconfig"; sourceTree = "<group>"; };
+		637E7D935AD64BA5B4D797A9 /* NunitoSemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoSemiBold.ttf; path = ../src/assets/fonts/NunitoSemiBold.ttf; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = delivery/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = delivery/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A57CD37A33C40A5245172AEA /* Pods-delivery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delivery.debug.xcconfig"; path = "Target Support Files/Pods-delivery/Pods-delivery.debug.xcconfig"; sourceTree = "<group>"; };
+		C9F95DBDE26A4BF98B4D7246 /* NunitoExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoExtraBold.ttf; path = ../src/assets/fonts/NunitoExtraBold.ttf; sourceTree = "<group>"; };
+		E26284C51CAF4BBAB7232A1E /* NunitoBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoBold.ttf; path = ../src/assets/fonts/NunitoBold.ttf; sourceTree = "<group>"; };
+		E5E5FC8DAB20AFE293A0E063 /* libPods-delivery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-delivery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -32,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD67457CFA1D5EEB63F46898 /* libPods-delivery.a in Frameworks */,
+				3B0941FE6A1BE2798F4BC24E /* libPods-delivery.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,9 +65,22 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				32B4FE3D543A8399E7E76D1C /* libPods-delivery.a */,
+				E5E5FC8DAB20AFE293A0E063 /* libPods-delivery.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		465E9B5B56394E95A3AD973F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				637E7D935AD64BA5B4D797A9 /* NunitoSemiBold.ttf */,
+				405FD044351E4A0C8A7598C5 /* NunitoMedium.ttf */,
+				C9F95DBDE26A4BF98B4D7246 /* NunitoExtraBold.ttf */,
+				233D3DD831C84BB6AFD751A6 /* NunitoRegular.ttf */,
+				E26284C51CAF4BBAB7232A1E /* NunitoBold.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -75,6 +98,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				465E9B5B56394E95A3AD973F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -92,8 +116,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				37458E7BB1718C95C7FF052B /* Pods-delivery.debug.xcconfig */,
-				346A1EA680E7AD5135A3BFF6 /* Pods-delivery.release.xcconfig */,
+				A57CD37A33C40A5245172AEA /* Pods-delivery.debug.xcconfig */,
+				570FAF77C2CEEA7141448262 /* Pods-delivery.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -105,13 +129,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "delivery" */;
 			buildPhases = (
-				C66C6302E1EB70D40AAB5FA1 /* [CP] Check Pods Manifest.lock */,
+				639C386087B470660F7635FA /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5BEA4207A2939C538D5B409C /* [CP] Embed Pods Frameworks */,
-				1626AE9C768D518FFC9BB57A /* [CP] Copy Pods Resources */,
+				6A83E1B8FE7CACDFEE0FE882 /* [CP] Embed Pods Frameworks */,
+				0E7470A7ADA9E389825932CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,6 +185,11 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C902F8CC009E2EFA194F6E48 /* PrivacyInfo.xcprivacy in Resources */,
+				90EC56F326EE416A9EDAB5A1 /* NunitoSemiBold.ttf in Resources */,
+				84A935C0635D4DF0841ED24F /* NunitoMedium.ttf in Resources */,
+				323DAE2D71DB412CBB3A7255 /* NunitoExtraBold.ttf in Resources */,
+				0667DF0F5F3041E1A1ED3450 /* NunitoRegular.ttf in Resources */,
+				21305EFD06344955B6DF46FF /* NunitoBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +212,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"\\\"$WITH_ENVIRONMENT\\\" \\\"$REACT_NATIVE_XCODE\\\"\"\n";
 		};
-		1626AE9C768D518FFC9BB57A /* [CP] Copy Pods Resources */ = {
+		0E7470A7ADA9E389825932CB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -200,24 +229,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BEA4207A2939C538D5B409C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C66C6302E1EB70D40AAB5FA1 /* [CP] Check Pods Manifest.lock */ = {
+		639C386087B470660F7635FA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,6 +251,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6A83E1B8FE7CACDFEE0FE882 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -255,7 +284,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37458E7BB1718C95C7FF052B /* Pods-delivery.debug.xcconfig */;
+			baseConfigurationReference = A57CD37A33C40A5245172AEA /* Pods-delivery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -285,7 +314,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 346A1EA680E7AD5135A3BFF6 /* Pods-delivery.release.xcconfig */;
+			baseConfigurationReference = 570FAF77C2CEEA7141448262 /* Pods-delivery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

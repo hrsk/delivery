@@ -10,15 +10,18 @@ export const CalculationStack = createNativeStackNavigator({
   screens: {
     Calculation: {
       screen: Calculation,
-      options: {
-        title: 'Calculate shipping',
-      },
+      options: { headerShown: false },
+      // options: {
+      //   title: 'Calculate shipping',
+      // },
     },
     CountryPicker: {
       screen: CountryPicker,
-      options: {
-        title: 'Where to deliver?',
-      },
+      options: { headerShown: false },
+
+      // options: {
+      //   title: 'Where to deliver?',
+      // },
     },
   },
 });

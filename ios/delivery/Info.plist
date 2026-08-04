@@ -59,6 +59,11 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>MaterialDesignIcons.ttf</string>
+		<string>NunitoSemiBold.ttf</string>
+		<string>NunitoMedium.ttf</string>
+		<string>NunitoExtraBold.ttf</string>
+		<string>NunitoRegular.ttf</string>
+		<string>NunitoBold.ttf</string>
 	</array>
 </dict>
 </plist>

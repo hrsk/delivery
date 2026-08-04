@@ -11,6 +11,7 @@ type MaterialDesignIconName = React.ComponentProps<
 
 export const MainTabs = createBottomTabNavigator({
   screenOptions: ({ route }) => ({
+    headerShown: false,
     tabBarLabelPosition: 'below-icon',
     animation: 'fade',
     tabBarIcon: ({ focused, color, size }) => {
