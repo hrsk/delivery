@@ -2,8 +2,10 @@ import { COLORS } from '@/constants/ui';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 import {
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   type TouchableOpacityProps,
 } from 'react-native';
@@ -27,6 +29,7 @@ interface IButton extends TouchableOpacityProps {
   loading?: boolean | null;
   variants?: 'primary' | 'delete' | 'outlined';
   error?: string | null;
+  labelStyle?: StyleProp<TextStyle>;
 }
 export const Button = ({
   label,
@@ -36,6 +39,8 @@ export const Button = ({
   variants = 'primary',
   error = null,
   disabled,
+  style,
+  labelStyle,
   ...props
 }: IButton) => {
   const Icon = icon?.component;
@@ -44,6 +49,7 @@ export const Button = ({
     <TouchableOpacity
       style={[
         styles.base,
+        style,
         size === 'small' ? styles.small : null,
         variants === 'delete' ? styles.delete : null,
         variants === 'outlined' ? styles.outlined : null,
@@ -52,7 +58,7 @@ export const Button = ({
       {...props}
       disabled={disabled}
     >
-      {label && <Text>{label}</Text>}
+      {label && <Text style={labelStyle}>{label}</Text>}
 
       {Icon && <Icon name={icon.name} size={icon.size} color={color} />}
     </TouchableOpacity>

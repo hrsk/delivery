@@ -16,7 +16,11 @@ export function SelectField({ label, value, onPress }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <Pressable onPress={onPress} style={styles.pressable}>
+      <Pressable
+        onPress={onPress}
+        style={styles.pressable}
+        onLayout={e => console.log(e.nativeEvent.layout)}
+      >
         <Text
           style={{
             fontSize: 16,
