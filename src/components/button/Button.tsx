@@ -17,13 +17,14 @@ type MaterialDesignIconName = React.ComponentProps<
 type Icon = {
   component: typeof MaterialDesignIcons;
   name: MaterialDesignIconName;
+  color: string;
   size: number;
 };
 
 interface IButton extends TouchableOpacityProps {
   label?: string;
   icon?: Icon;
-  color?: string;
+  // color?: string;
   withIcon?: boolean;
   size?: 'small' | 'medium' | 'large';
   loading?: boolean | null;
@@ -34,7 +35,6 @@ interface IButton extends TouchableOpacityProps {
 export const Button = ({
   label,
   icon,
-  color,
   size = 'medium',
   variants = 'primary',
   error = null,
@@ -60,7 +60,7 @@ export const Button = ({
     >
       {label && <Text style={labelStyle}>{label}</Text>}
 
-      {Icon && <Icon name={icon.name} size={icon.size} color={color} />}
+      {Icon && <Icon name={icon.name} size={icon.size} color={icon.color} />}
     </TouchableOpacity>
   );
 };

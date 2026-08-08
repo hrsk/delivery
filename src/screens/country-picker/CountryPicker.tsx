@@ -4,7 +4,7 @@ import { FlatList, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { getDeliveryPoints } from '@/api/api';
-import { Point } from '@/api/types';
+import { DeliveryPointType } from '@/api/types';
 import { Header } from '@/components';
 import { DeliveryPoint } from '@/screens/country-picker/DeliveryPoint';
 import { useCalculationStore } from '@/store/useCalculation';
@@ -14,8 +14,8 @@ export const CountryPicker = () => {
   const navigation = useNavigation();
   const { mode } = useCalculationStore();
 
-  const [deliveryPoints, setDeliveryPoints] = useState<Point[]>([]);
-  const { setCountry } = useCalculationStore();
+  const [deliveryPoints, setDeliveryPoints] = useState<DeliveryPointType[]>([]);
+  const { setDeliveryPoint } = useCalculationStore();
 
   useEffect(() => {
     getDeliveryPoints().then(res => setDeliveryPoints(res.data.points));
@@ -38,7 +38,7 @@ export const CountryPicker = () => {
           renderItem={({ item }) => (
             <Pressable
               onPress={() => {
-                setCountry(item);
+                setDeliveryPoint(item);
                 navigation.goBack();
               }}
             >

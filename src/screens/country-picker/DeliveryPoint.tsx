@@ -1,11 +1,11 @@
-import { Point } from '@/api/types';
+import { DeliveryPointType } from '@/api/types';
 import { styles } from '@/screens/country-picker/DeliveryPoint.styles';
 
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Text, View } from 'react-native';
 
 type Props = {
-  point: Point;
+  point: DeliveryPointType;
 };
 
 export const DeliveryPoint = ({ point }: Props) => {

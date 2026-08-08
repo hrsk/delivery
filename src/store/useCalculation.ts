@@ -1,9 +1,9 @@
-import { Point } from '@/api/types';
+import { DeliveryPointType } from '@/api/types';
 import { create } from 'zustand';
 type Tabs = 'approximate' | 'exact';
 type PointsState = {
-  from: Point | null;
-  to: Point | null;
+  from: DeliveryPointType | null;
+  to: DeliveryPointType | null;
 
   mode: 'from' | 'to' | null;
   activePoint: string | null;
@@ -12,7 +12,7 @@ type PointsState = {
   pickTo: () => void;
 
   setMode(mode: 'from' | 'to'): void;
-  setCountry(country: Point): void;
+  setDeliveryPoint(point: DeliveryPointType): void;
   tab: Tabs;
   setTab(tab: Tabs): void;
 };
@@ -41,10 +41,10 @@ export const useCalculationStore = create<PointsState>(set => ({
     set({
       mode: 'to',
     }),
-  setCountry: country =>
+  setDeliveryPoint: point =>
     set(state => ({
-      from: state.mode === 'from' ? country : state.from,
-      to: state.mode === 'to' ? country : state.to,
+      from: state.mode === 'from' ? point : state.from,
+      to: state.mode === 'to' ? point : state.to,
     })),
   setTab: () =>
     set(state => ({
