@@ -23,7 +23,7 @@ const initialState = {
   to: null,
   tab: 'approximate' as Tabs,
   activePoint: null,
-  mode: 'from' as Mode,
+  mode: null as Mode,
 };
 
 export const useCalculationStore = create<PointsState>(set => ({

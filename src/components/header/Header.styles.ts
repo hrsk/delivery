@@ -1,5 +1,5 @@
-import { Nunito } from '@/constants/fonts';
-import { lineHeightToPx } from '@/screens/calculation/SelectField.styles';
+import { colors } from '@/theme/colors';
+import { typography } from '@/theme/typography';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
 
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.background,
   },
 
   side: {
@@ -22,9 +22,7 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontFamily: Nunito.BOLD,
-    fontSize: 24,
-    lineHeight: lineHeightToPx(24, 133),
-    color: '#0B0B0B',
+    ...typography.titleMd,
+    color: colors.foreground,
   },
 });

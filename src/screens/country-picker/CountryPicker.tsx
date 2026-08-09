@@ -1,38 +1,43 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getDeliveryPoints } from '@/api/api';
-import { DeliveryPointType } from '@/api/types';
 import { Header } from '@/components';
+import { CalculationStackParamList } from '@/navigation/CalculationStack';
+import { styles } from '@/screens/country-picker/CountryPicker.styles';
 import { DeliveryPoint } from '@/screens/country-picker/DeliveryPoint';
 import { useCalculationStore } from '@/store/useCalculation';
+import { colors } from '@/theme/colors';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export const CountryPicker = () => {
+type Props = NativeStackScreenProps<CalculationStackParamList, 'CountryPicker'>;
+
+export const CountryPicker = ({ route }: Props) => {
+  const { deliveryPoints } = route.params;
+
   const navigation = useNavigation();
   const { mode } = useCalculationStore();
 
-  const [deliveryPoints, setDeliveryPoints] = useState<DeliveryPointType[]>([]);
   const { setDeliveryPoint } = useCalculationStore();
 
-  useEffect(() => {
-    getDeliveryPoints().then(res => setDeliveryPoints(res.data.points));
-  }, []);
-
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF' }}>
+    <SafeAreaView style={styles.safeArea}>
       <Header
         title={mode === 'from' ? 'Откуда?' : 'Куда?'}
         leftAction={
           <Pressable onPress={() => navigation.goBack()}>
-            <MaterialDesignIcons name="close" size={24} color={'#111827'} />
+            <MaterialDesignIcons
+              name="close"
+              size={24}
+              color={colors.foreground}
+            />
           </Pressable>
         }
       />
 
-      <View style={{ flex: 1 }}>
+      <View>
         <FlatList
           data={deliveryPoints}
           renderItem={({ item }) => (
@@ -46,9 +51,7 @@ export const CountryPicker = () => {
             </Pressable>
           )}
           keyExtractor={item => item.id}
-          contentContainerStyle={{
-            paddingHorizontal: 16,
-          }}
+          contentContainerStyle={styles.listItem}
         />
       </View>
     </SafeAreaView>

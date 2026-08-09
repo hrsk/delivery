@@ -13,7 +13,12 @@ import { CitySuggestions } from '@/screens/calculation/CitySuggestions';
 import { Exact } from '@/screens/calculation/Exact';
 import { SelectField } from '@/screens/calculation/SelectField';
 import { useCalculationStore } from '@/store/useCalculation';
-import { BottomSheetBackdrop, BottomSheetModal } from '@gorhom/bottom-sheet';
+import {
+  BottomSheetBackdrop,
+  BottomSheetBackdropProps,
+  BottomSheetBackgroundProps,
+  BottomSheetModal,
+} from '@gorhom/bottom-sheet';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Animated, {
@@ -29,17 +34,19 @@ import {
   DeliveryPackage,
   DeliveryPointType,
 } from '@/api/types';
+import { colors } from '@/theme/colors';
+import { palette } from '@/theme/palette';
 
 type FormData = CalculateDeliveryPackageDto;
 
 export const Calculation = () => {
-  const { from, to, pickFrom, pickTo, setTab, tab } = useCalculationStore();
-
   const navigation = useNavigation();
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-  const [citySuggestions, setCitySuggestions] = useState<DeliveryPointType[]>(
-    [],
-  );
+  const { from, to, pickFrom, pickTo, setTab, tab, setMode } =
+    useCalculationStore();
+
+  const [deliveryPoints, setDeliveryPoints] = useState<DeliveryPointType[]>([]);
   const [packageTypes, setPackagesTypes] = useState<DeliveryPackage[]>([]);
   const [packageItem, setPackageItem] = useState<DeliveryPackage>();
 
@@ -52,16 +59,15 @@ export const Calculation = () => {
     },
   });
 
-  // ref
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
-  // callbacks
-  const handlePresentModalPress = useCallback(() => {
+  const handlePresentBottomSheet = useCallback(() => {
     bottomSheetModalRef.current?.present();
+  }, []);
+  const handleCloseBottomSheet = useCallback(() => {
+    bottomSheetModalRef.current?.close();
   }, []);
 
   useEffect(() => {
-    getDeliveryPoints().then(res => setCitySuggestions(res.data.points));
+    getDeliveryPoints().then(res => setDeliveryPoints(res.data.points));
     getPackagesTypes().then(res => setPackagesTypes(res.data.packages));
   }, []);
 
@@ -79,55 +85,119 @@ export const Calculation = () => {
   }));
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
-
     if (from && to) {
       calculateDelivery({
         package: data,
         senderPoint: { latitude: from?.latitude, longitude: from?.longitude },
         receiverPoint: { latitude: to?.latitude, longitude: to?.longitude },
-      }).then(res => console.log(res.success));
+      });
     }
     setTab('approximate');
     reset({ length: 0, width: 0, height: 0, weight: 0 });
   };
 
+  const bottomSheetBackground = useCallback(
+    ({ style, ...props }: BottomSheetBackgroundProps) => (
+      <View {...props} style={[style, styles.bottomSheetBackground]} />
+    ),
+    [],
+  );
+  const bottomSheetBackDrop = useCallback(
+    (props: BottomSheetBackdropProps) => (
+      <BottomSheetBackdrop
+        {...props}
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        opacity={0.5}
+      />
+    ),
+    [],
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Header title="Рассчитать доставку" />
-        <View style={{ gap: 4 }}>
-          <SelectField
-            label="Откуда"
-            value={from?.name ?? 'Выберите страну'}
-            onPress={() => {
-              pickFrom();
-              navigation.navigate('CalculationStack', {
-                screen: 'CountryPicker',
-              });
-            }}
-          />
-          <CitySuggestions mode={'from'} points={citySuggestions} />
-        </View>
 
-        <View style={{ gap: 4 }}>
-          <SelectField
-            label="Куда"
-            value={to?.name ?? 'Выберите страну'}
-            onPress={() => {
-              pickTo();
-              navigation.navigate('CalculationStack', {
-                screen: 'CountryPicker',
-              });
-            }}
+        <SelectField
+          label="Город отправки"
+          leftIcon={
+            <MaterialDesignIcons
+              name="circle-double"
+              size={16}
+              color={palette.green500}
+            />
+          }
+          rightIcon={
+            <MaterialDesignIcons
+              name="chevron-down"
+              size={20}
+              color={colors.input}
+            />
+          }
+          value={from?.name ?? 'Выберите страну'}
+          onPress={() => {
+            pickFrom();
+            navigation.navigate('CalculationStack', {
+              screen: 'CountryPicker',
+              params: {
+                deliveryPoints,
+              },
+            });
+          }}
+        >
+          <CitySuggestions
+            mode={'from'}
+            setMode={() => setMode('from')}
+            points={deliveryPoints}
           />
-          <CitySuggestions mode={'to'} points={citySuggestions} />
-        </View>
+        </SelectField>
+
+        <SelectField
+          label="Город назначения"
+          value={to?.name ?? 'Выберите страну'}
+          onPress={() => {
+            pickTo();
+            navigation.navigate('CalculationStack', {
+              screen: 'CountryPicker',
+              params: {
+                deliveryPoints,
+              },
+            });
+          }}
+          leftIcon={
+            <MaterialDesignIcons
+              name="circle-double"
+              size={16}
+              color={colors.foreground}
+            />
+          }
+          rightIcon={
+            <MaterialDesignIcons
+              name="chevron-down"
+              size={20}
+              color={colors.input}
+            />
+          }
+        >
+          <CitySuggestions
+            mode={'to'}
+            setMode={() => setMode('to')}
+            points={deliveryPoints}
+          />
+        </SelectField>
 
         <SelectField
           label="Размер посылки"
           value={packageItem?.name ? packageItem.name : 'Не выбран'}
-          onPress={handlePresentModalPress}
+          onPress={handlePresentBottomSheet}
+          rightIcon={
+            <MaterialDesignIcons
+              name="chevron-down"
+              size={20}
+              color={colors.input}
+            />
+          }
         />
 
         <Button
@@ -137,7 +207,7 @@ export const Calculation = () => {
             component: MaterialDesignIcons,
             name: 'arrow-right',
             size: 16,
-            color: '#FBFBFB',
+            color: colors.primaryForeground,
           }}
           style={styles.submitButton}
           labelStyle={styles.buttonText}
@@ -146,17 +216,11 @@ export const Calculation = () => {
         <BottomSheetModal
           index={0}
           enableDynamicSizing={false}
-          handleIndicatorStyle={{ backgroundColor: '#FFF' }}
+          handleIndicatorStyle={{ backgroundColor: colors.background }}
           ref={bottomSheetModalRef}
           snapPoints={['50%']}
-          backdropComponent={props => (
-            <BottomSheetBackdrop
-              {...props}
-              appearsOnIndex={0}
-              disappearsOnIndex={-1}
-              opacity={0.5}
-            />
-          )}
+          backgroundComponent={bottomSheetBackground}
+          backdropComponent={bottomSheetBackDrop}
         >
           <View style={styles.bottomSheetButtons}>
             <Animated.View
@@ -181,8 +245,10 @@ export const Calculation = () => {
           {tab === 'exact' && <Exact control={control} />}
           {tab === 'approximate' && (
             <Approximate
+              packageItem={packageItem}
               packageTypes={packageTypes}
               setPackageItem={setPackageItem}
+              onClose={handleCloseBottomSheet}
             />
           )}
         </BottomSheetModal>

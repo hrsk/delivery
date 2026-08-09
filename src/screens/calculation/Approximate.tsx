@@ -1,37 +1,43 @@
 import { DeliveryPackage } from '@/api/types';
 import { getPackageImage } from '@/constants/packages';
 import { styles } from '@/screens/calculation/Approximate.styles';
-import { BottomSheetFlatList, BottomSheetModal } from '@gorhom/bottom-sheet';
+import { colors } from '@/theme/colors';
+import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 
 type Props = {
+  packageItem: DeliveryPackage | undefined;
   packageTypes: DeliveryPackage[];
   setPackageItem: (item: DeliveryPackage) => void;
+  onClose: () => void;
 };
 
-export const Approximate = ({ packageTypes, setPackageItem }: Props) => {
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
+export const Approximate = ({
+  packageItem,
+  packageTypes,
+  setPackageItem,
+  onClose,
+}: Props) => {
   const handleSheetChanges = useCallback(
     (item: DeliveryPackage) => {
-      console.log(item);
-
-      bottomSheetModalRef.current?.close();
+      onClose();
       setPackageItem(item);
     },
-    [setPackageItem],
+    [setPackageItem, onClose],
   );
 
   return (
-    <View style={{ flex: 1, paddingBottom: 12 }}>
+    <View style={styles.container}>
       <Text style={styles.tabHeader}>Размер посылки</Text>
       <BottomSheetFlatList
-        style={{ paddingHorizontal: 16, flex: 1 }}
+        style={styles.bottomSheetFlatList}
         data={packageTypes}
-        keyExtractor={(_, index) => index.toString()}
+        keyExtractor={item => item.id}
         renderItem={({ item }) => {
+          const selected = item.id === packageItem?.id;
+
           return (
             <Pressable
               style={styles.button}
@@ -44,12 +50,14 @@ export const Approximate = ({ packageTypes, setPackageItem }: Props) => {
                   {`${item.length} x ${item.width} x ${item.height}`}{' '}
                 </Text>
               </View>
-              <MaterialDesignIcons
-                style={styles.checkbox}
-                name="check-circle"
-                size={24}
-                color={'#0B0B0B'}
-              />
+              {selected && (
+                <MaterialDesignIcons
+                  style={styles.checkbox}
+                  name="check-circle"
+                  size={24}
+                  color={colors.foreground}
+                />
+              )}
             </Pressable>
           );
         }}

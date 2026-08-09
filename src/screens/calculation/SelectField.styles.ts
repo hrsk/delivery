@@ -1,22 +1,18 @@
+import { typography } from '@/theme/typography';
 import { StyleSheet } from 'react-native';
-export const lineHeightToPx = (fontSize: number, lineHeight: number): number =>
-  Math.round((fontSize * lineHeight) / 100);
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     gap: 4,
   },
   label: {
-    fontSize: 14,
-    lineHeight: lineHeightToPx(14, 157),
+    ...typography.caption,
   },
   pressable: {
-    // flex: 1,
+    gap: 8,
 
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
 
     borderTopWidth: 1,
     borderBottomWidth: 1,
@@ -28,5 +24,9 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     // width: 280,
     height: 52,
+  },
+  fieldText: {
+    flex: 1,
+    ...typography.medium,
   },
 });

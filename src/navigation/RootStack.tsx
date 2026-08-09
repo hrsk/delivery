@@ -1,10 +1,21 @@
-import { CalculationStack } from '@/navigation/CalculationStack';
-import { MainTabs } from '@/navigation/MainTabs';
+import {
+  CalculationStack,
+  CalculationStackParamList,
+} from '@/navigation/CalculationStack';
+import { MainTabs, MainTabsParamList } from '@/navigation/MainTabs';
 import { Login } from '@/screens/login/Login';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const RootStack = createNativeStackNavigator({
+export type RootStackParamList = {
+  CalculationStack: NavigatorScreenParams<CalculationStackParamList>;
+
+  Login: { redirectTo: 'Calculation' };
+  MainTabs: NavigatorScreenParams<MainTabsParamList>;
+};
+
+export const RootStack = createNativeStackNavigator<RootStackParamList>({
   initialRouteName: 'Login',
   screenOptions: {
     headerShown: false,

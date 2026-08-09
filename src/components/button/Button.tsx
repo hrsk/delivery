@@ -1,9 +1,9 @@
-import { COLORS } from '@/constants/ui';
+import { styles } from '@/components/button/Button.styles';
+
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 import {
   StyleProp,
-  StyleSheet,
   Text,
   TextStyle,
   TouchableOpacity,
@@ -24,7 +24,6 @@ type Icon = {
 interface IButton extends TouchableOpacityProps {
   label?: string;
   icon?: Icon;
-  // color?: string;
   withIcon?: boolean;
   size?: 'small' | 'medium' | 'large';
   loading?: boolean | null;
@@ -64,31 +63,3 @@ export const Button = ({
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  base: {
-    backgroundColor: COLORS.PRIMARY_ACTIVE_BUTTON,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-  },
-  small: {
-    paddingHorizontal: 12,
-    paddingVertical: 12,
-  },
-  delete: {
-    backgroundColor: 'crimson',
-  },
-  outlined: {
-    backgroundColor: COLORS.PRIMARY_BACKGROUND,
-    borderColor: COLORS.PRIMARY_BORDER,
-    borderWidth: 1,
-  },
-  disabled: {
-    backgroundColor: COLORS.ERROR,
-    opacity: 0.3,
-  },
-});

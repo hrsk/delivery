@@ -6,7 +6,7 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'grey' }}>
+      <GestureHandlerRootView>
         <BottomSheetModalProvider>
           <Navigation />
         </BottomSheetModalProvider>

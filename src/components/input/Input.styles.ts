@@ -1,5 +1,5 @@
-import { Nunito } from '@/constants/fonts';
-import { lineHeightToPx } from '@/screens/calculation/SelectField.styles';
+import { colors } from '@/theme/colors';
+import { typography } from '@/theme/typography';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -21,9 +21,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   label: {
-    fontSize: 14,
-    fontFamily: Nunito.REGULAR,
-    lineHeight: lineHeightToPx(14, 157),
-    color: '#0B0B0B',
+    ...typography.regular,
+    // fontSize: 14,
+    // fontFamily: Nunito.REGULAR,
+    // lineHeight: lineHeightToPx(14, 157),
+    color: colors.foreground,
   },
 });

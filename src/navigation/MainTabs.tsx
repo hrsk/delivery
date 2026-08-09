@@ -9,7 +9,13 @@ type MaterialDesignIconName = React.ComponentProps<
   typeof MaterialDesignIcons
 >['name'];
 
-export const MainTabs = createBottomTabNavigator({
+export type MainTabsParamList = {
+  Calculation: undefined;
+  History: undefined;
+  Profile: undefined;
+};
+
+export const MainTabs = createBottomTabNavigator<MainTabsParamList>({
   screenOptions: ({ route }) => ({
     headerShown: false,
     tabBarLabelPosition: 'below-icon',

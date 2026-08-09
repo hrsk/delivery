@@ -1,13 +1,14 @@
-import { Nunito } from '@/constants/fonts';
-import { lineHeightToPx } from '@/screens/calculation/SelectField.styles';
+import { colors } from '@/theme/colors';
+import { typography } from '@/theme/typography';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   buttonText: {
     textDecorationLine: 'underline',
-    color: '#969696',
-    fontSize: 16,
-    lineHeight: lineHeightToPx(16, 150),
-    fontFamily: Nunito.REGULAR,
+    color: colors.surface,
+    ...typography.link,
+    // fontSize: 16,
+    // lineHeight: lineHeightToPx(16, 150),
+    // fontFamily: Nunito.REGULAR,
   },
 });

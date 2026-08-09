@@ -6,9 +6,10 @@ import { Pressable, Text } from 'react-native';
 type Props = {
   points: DeliveryPointType[];
   mode: Mode;
+  setMode: () => void;
 };
 
-export const CitySuggestions = ({ points, mode }: Props) => {
+export const CitySuggestions = ({ points, mode, setMode }: Props) => {
   const { setDeliveryPoint, from, to } = useCalculationStore();
 
   const activePoint = mode === 'from' ? from : to;
@@ -31,6 +32,7 @@ export const CitySuggestions = ({ points, mode }: Props) => {
           <Pressable
             key={item.id}
             onPress={() => {
+              setMode();
               setDeliveryPoint(item);
             }}
           >

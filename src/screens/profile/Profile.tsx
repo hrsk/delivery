@@ -1,13 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from 'react-native';
-import { style } from './Profile.styles';
+import { styles } from './Profile.styles';
 
 import { Button } from '@/components';
 
 export const Profile = () => {
   const navigate = useNavigation();
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Text>Profile</Text>
 
       <View />
@@ -16,6 +16,7 @@ export const Profile = () => {
           navigate.navigate('MainTabs', { screen: 'Calculation' });
         }}
         label="Go to calculation"
+        labelStyle={styles.label}
       />
     </View>
   );

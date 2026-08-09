@@ -1,9 +1,12 @@
+import { colors } from '@/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  listItem: {
+    paddingHorizontal: 16,
+  },
+  safeArea: {
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    backgroundColor: colors.background,
   },
 });

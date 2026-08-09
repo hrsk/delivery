@@ -1,5 +1,5 @@
-import { Nunito } from '@/constants/fonts';
-import { lineHeightToPx } from '@/screens/calculation/SelectField.styles';
+import { colors } from '@/theme/colors';
+import { typography } from '@/theme/typography';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -7,13 +7,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 36,
-    backgroundColor: '#FFF',
+    backgroundColor: colors.background,
   },
   container: {
     paddingHorizontal: 24,
     flex: 1,
-    backgroundColor: '#FFF',
-    borderColor: '#B7B7B7',
+    backgroundColor: colors.background,
+    borderColor: colors.borderHard,
     borderBottomWidth: 1,
     borderRightWidth: 1,
     borderLeftWidth: 1,
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   bottomSheetButtons: {
     flexDirection: 'row',
-    backgroundColor: '#F3F3F3',
+    backgroundColor: colors.muted,
     marginHorizontal: 24,
     borderRadius: 999,
     justifyContent: 'space-between',
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     width: 160,
     height: 42,
     borderRadius: 999,
-    backgroundColor: '#FBFBFB',
+    backgroundColor: colors.background,
     boxShadow:
       '0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1)',
   },
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 9999,
-    backgroundColor: '#FBFBFB',
+    backgroundColor: colors.background,
     paddingVertical: 8,
     paddingHorizontal: 12,
     width: 160,
@@ -61,23 +61,24 @@ export const styles = StyleSheet.create({
     height: 42,
   },
   bottomSheetButtonText: {
-    fontSize: 18,
-    fontFamily: Nunito.BOLD,
-    lineHeight: lineHeightToPx(18, 144),
-    color: '#0B0B0B',
+    ...typography.bold,
+    color: colors.foreground,
   },
   buttonText: {
-    fontSize: 14,
-    fontFamily: Nunito.BOLD,
-    lineHeight: lineHeightToPx(18, 150),
-    color: '#FBFBFB',
+    ...typography.medium,
+    color: colors.primaryForeground,
   },
   submitButton: {
-    backgroundColor: '#0B0B0B',
+    backgroundColor: colors.foreground,
     borderRadius: 9999,
     marginVertical: 24,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
+  },
+  bottomSheetBackground: {
+    backgroundColor: colors.background,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
   },
 });
