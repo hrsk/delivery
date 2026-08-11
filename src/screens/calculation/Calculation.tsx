@@ -36,6 +36,7 @@ import {
 } from '@/api/types';
 import { colors } from '@/theme/colors';
 import { palette } from '@/theme/palette';
+import { useSteps } from '@/store/useSteps';
 
 type FormData = CalculateDeliveryPackageDto;
 
@@ -45,6 +46,8 @@ export const Calculation = () => {
 
   const { from, to, pickFrom, pickTo, setTab, tab, setMode } =
     useCalculationStore();
+
+  const { setStep } = useSteps();
 
   const [deliveryPoints, setDeliveryPoints] = useState<DeliveryPointType[]>([]);
   const [packageTypes, setPackagesTypes] = useState<DeliveryPackage[]>([]);
@@ -90,6 +93,16 @@ export const Calculation = () => {
         package: data,
         senderPoint: { latitude: from?.latitude, longitude: from?.longitude },
         receiverPoint: { latitude: to?.latitude, longitude: to?.longitude },
+      }).then(res => {
+        if (res.data.success) {
+          navigation.navigate('SendingStack', {
+            screen: 'SendingMethods',
+            params: {
+              sendingMethods: res.data.options,
+            },
+          });
+          setStep('Step 1');
+        }
       });
     }
     setTab('approximate');

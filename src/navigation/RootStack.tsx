@@ -3,6 +3,7 @@ import {
   CalculationStackParamList,
 } from '@/navigation/CalculationStack';
 import { MainTabs, MainTabsParamList } from '@/navigation/MainTabs';
+import { SendingStack, SendingStackParamList } from '@/navigation/SendingStack';
 import { Login } from '@/screens/login/Login';
 import { NavigatorScreenParams } from '@react-navigation/native';
 
@@ -13,6 +14,7 @@ export type RootStackParamList = {
 
   Login: { redirectTo: 'Calculation' };
   MainTabs: NavigatorScreenParams<MainTabsParamList>;
+  SendingStack: NavigatorScreenParams<SendingStackParamList>;
 };
 
 export const RootStack = createNativeStackNavigator<RootStackParamList>({
@@ -24,6 +26,7 @@ export const RootStack = createNativeStackNavigator<RootStackParamList>({
     Login: Login,
     MainTabs: MainTabs,
     CalculationStack: CalculationStack,
+    SendingStack: SendingStack,
   },
 });
 

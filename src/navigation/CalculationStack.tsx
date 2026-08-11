@@ -1,6 +1,7 @@
-import { DeliveryPointType } from '@/api/types';
-import { Calculation } from '@/screens';
+import { DeliveryOption, DeliveryPointType } from '@/api/types';
+import { Calculation, SendingMethods } from '@/screens';
 import { CountryPicker } from '@/screens/country-picker/CountryPicker';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export type CalculationStackParamList = {
@@ -8,6 +9,9 @@ export type CalculationStackParamList = {
 
   CountryPicker: {
     deliveryPoints: DeliveryPointType[] | undefined;
+  };
+  Sending: {
+    sendingMethods: DeliveryOption[] | undefined;
   };
 };
 
@@ -24,6 +28,10 @@ export const CalculationStack =
       },
       CountryPicker: {
         screen: CountryPicker,
+        options: { headerShown: false },
+      },
+      Sending: {
+        screen: SendingMethods,
         options: { headerShown: false },
       },
     },
