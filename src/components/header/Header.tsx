@@ -1,17 +1,18 @@
 import { styles } from '@/components/header/Header.styles';
 import { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { StyleProp, Text, View, ViewProps } from 'react-native';
 
 type Props = {
-  title: string;
+  title?: string;
   leftAction?: ReactNode;
   rightAction?: ReactNode;
+  style?: StyleProp<ViewProps>;
 };
 
-export const Header = ({ title, leftAction, rightAction }: Props) => {
+export const Header = ({ title, leftAction, rightAction, style }: Props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.side}>{leftAction}</View>
+    <View style={[styles.container]}>
+      <View style={styles.leftSide}>{leftAction}</View>
 
       <View style={styles.center}>
         <Text numberOfLines={1} style={styles.title}>
@@ -19,7 +20,7 @@ export const Header = ({ title, leftAction, rightAction }: Props) => {
         </Text>
       </View>
 
-      <View style={styles.side}>{rightAction}</View>
+      <View style={styles.rightSide}>{rightAction}</View>
     </View>
   );
 };

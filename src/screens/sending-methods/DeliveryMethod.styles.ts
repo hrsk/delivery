@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.borderHard,
     padding: 16,
   },
-  wrapper: {
+  iconWrapper: {
     width: 48,
     height: 48,
     borderRadius: 9999,

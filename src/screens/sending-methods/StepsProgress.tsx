@@ -26,6 +26,7 @@ export const StepsProgress = ({
           alignItems: 'center',
           justifyContent: 'flex-start',
           backgroundColor: colors.muted,
+          width: '100%',
           borderRadius: 16,
         }}
       >
@@ -40,7 +41,7 @@ export const StepsProgress = ({
                 { backgroundColor: colors.muted, height: 4 },
                 isActive && {
                   backgroundColor: palette.green500,
-                  width: 46,
+                  width: 51.5,
                   height: 4,
                   borderRadius: 16,
                 },

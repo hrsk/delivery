@@ -20,18 +20,24 @@ type Props = NativeStackScreenProps<CalculationStackParamList, 'Sending'>;
 export const SendingMethods = ({ route }: Props) => {
   const { sendingMethods } = route.params;
 
-  const { steps, setStep } = useSteps();
+  const { steps, forwardStep, backStep } = useSteps();
 
   const navigation = useNavigation();
+  console.log(sendingMethods);
 
-  const currentStep = steps.indexOf(steps[0]) + 1;
+  const currentStep = steps.length;
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header
         title="Способ отправки"
         leftAction={
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable
+            onPress={() => {
+              backStep('Step 1');
+              navigation.goBack();
+            }}
+          >
             <MaterialDesignIcons
               name="chevron-left"
               size={24}
@@ -41,7 +47,10 @@ export const SendingMethods = ({ route }: Props) => {
         }
       />
 
-      <StepsProgress currentStep={currentStep} totalSteps={STEPS.length} />
+      <StepsProgress
+        currentStep={currentStep}
+        totalSteps={Object.keys(STEPS).length}
+      />
 
       <View style={styles.container}>
         <FlatList
@@ -50,9 +59,9 @@ export const SendingMethods = ({ route }: Props) => {
             <Pressable
               onPress={() => {
                 navigation.navigate('SendingStack', {
-                  screen: 'Recipient',
+                  screen: 'Receiver',
                 });
-                setStep('Step 2');
+                forwardStep('Step 2');
               }}
             >
               <DeliveryMethod delivery={item} />

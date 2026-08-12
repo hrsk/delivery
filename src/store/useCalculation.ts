@@ -15,6 +15,7 @@ type PointsState = {
   setDeliveryPoint(point: DeliveryPointType): void;
   tab: Tabs;
   setTab(tab: Tabs): void;
+  resetDeliveryPoints: () => void;
 };
 
 export type Mode = 'from' | 'to' | null;
@@ -49,5 +50,10 @@ export const useCalculationStore = create<PointsState>(set => ({
   setTab: () =>
     set(state => ({
       tab: state.tab === 'approximate' ? 'exact' : 'approximate',
+    })),
+  resetDeliveryPoints: () =>
+    set(() => ({
+      from: null,
+      to: null,
     })),
 }));

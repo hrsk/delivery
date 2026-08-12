@@ -8,7 +8,7 @@ import { plural } from '@/utils/plural';
 export const DeliveryMethod = ({ delivery }: { delivery: DeliveryOption }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.wrapper}>
+      <View style={styles.iconWrapper}>
         <MaterialDesignIcons
           name={delivery.type === 'express' ? 'airplane' : 'bus'}
           size={24}

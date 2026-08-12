@@ -54,7 +54,44 @@ export type DeliveryOption = {
   type: DeliveryOptionType;
 };
 
-enum DeliveryOptionType {
+export enum DeliveryOptionType {
   default = 'default',
   express = 'express',
 }
+export enum Payer {
+  receiver = 'receiver',
+  sender = 'sender',
+}
+
+export type CreateDeliveryOrderReceiverAddressDto = {
+  apartment: string;
+  house: string;
+  street: string;
+  comment: string;
+  isNonContact: boolean;
+};
+export type CreateDeliveryOrderSenderAddressDto = {
+  apartment: string;
+  house: string;
+  street: string;
+  comment: string;
+};
+
+export type CreateDeliveryOrderPersonDto = {
+  firstname: string;
+  lastname: string;
+  phone: string;
+  middlename: string;
+};
+
+export type CreateDeliveryOrderDto = {
+  packageId: string;
+  optionType: DeliveryOptionType;
+  senderPointId: string;
+  senderAddress: CreateDeliveryOrderSenderAddressDto;
+  sender: CreateDeliveryOrderPersonDto;
+  receiverPointId: string;
+  receiverAddress: CreateDeliveryOrderReceiverAddressDto;
+  receiver: CreateDeliveryOrderPersonDto;
+  payer: Payer;
+};

@@ -15,17 +15,18 @@ interface InputProps extends TextInputProps {
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
+  inputStyle?: StyleProp<TextInputProps>;
 }
 
 export const Input = forwardRef<TextInput, InputProps>(
-  ({ style, label, labelStyle, placeholder, ...props }, ref) => {
+  ({ style, label, labelStyle, placeholder, inputStyle, ...props }, ref) => {
     return (
       <View style={[styles.base, style]}>
         <Text style={[styles.label, labelStyle]}>{label}</Text>
 
         <TextInput
           ref={ref}
-          style={styles.input}
+          style={[inputStyle, styles.input]}
           placeholder={placeholder}
           placeholderTextColor="#B7B7B7"
           {...props}

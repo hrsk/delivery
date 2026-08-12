@@ -35,9 +35,19 @@ export const typography = StyleSheet.create({
     fontSize: 16,
     lineHeight: lineHeightToPx(16, 150),
   },
+  bodySm: {
+    fontFamily: Nunito.REGULAR,
+    fontSize: 16,
+    lineHeight: lineHeightToPx(16, 150),
+  },
   caption: {
     fontFamily: Nunito.REGULAR,
     fontSize: 14,
     lineHeight: lineHeightToPx(14, 157),
+  },
+  placeholder: {
+    fontFamily: Nunito.REGULAR,
+    fontSize: 20,
+    lineHeight: lineHeightToPx(20, 120),
   },
 });

@@ -7,11 +7,17 @@ export const styles = StyleSheet.create({
     height: 60,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
 
     backgroundColor: colors.background,
   },
 
-  side: {
+  leftSide: {
+    width: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  rightSide: {
     width: 48,
     justifyContent: 'center',
     alignItems: 'center',

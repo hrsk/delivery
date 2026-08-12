@@ -37,6 +37,7 @@ import {
 import { colors } from '@/theme/colors';
 import { palette } from '@/theme/palette';
 import { useSteps } from '@/store/useSteps';
+import { useOrderForm } from '@/store/useOrderForm';
 
 type FormData = CalculateDeliveryPackageDto;
 
@@ -47,7 +48,8 @@ export const Calculation = () => {
   const { from, to, pickFrom, pickTo, setTab, tab, setMode } =
     useCalculationStore();
 
-  const { setStep } = useSteps();
+  const { forwardStep } = useSteps();
+  const { setPackageId, setSenderPointId, setReceiverPointId } = useOrderForm();
 
   const [deliveryPoints, setDeliveryPoints] = useState<DeliveryPointType[]>([]);
   const [packageTypes, setPackagesTypes] = useState<DeliveryPackage[]>([]);
@@ -77,7 +79,7 @@ export const Calculation = () => {
   const translateX = useSharedValue(0);
 
   useEffect(() => {
-    translateX.value = withTiming(tab === 'approximate' ? 0 : 160, {
+    translateX.value = withTiming(tab === 'approximate' ? 0 : 192, {
       duration: 250,
       easing: Easing.out(Easing.cubic),
     });
@@ -101,7 +103,10 @@ export const Calculation = () => {
               sendingMethods: res.data.options,
             },
           });
-          setStep('Step 1');
+          forwardStep('Step 1');
+          setSenderPointId(from.id);
+          setReceiverPointId(to.id);
+          setPackageId(packageItem?.id);
         }
       });
     }

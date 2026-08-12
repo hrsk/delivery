@@ -7,11 +7,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
     gap: 4,
   },
   input: {
-    width: 328,
+    width: '100%',
     borderColor: '#B7B7B7',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     borderWidth: 1,
