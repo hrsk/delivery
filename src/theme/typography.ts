@@ -10,6 +10,11 @@ export const typography = StyleSheet.create({
     fontSize: 24,
     lineHeight: lineHeightToPx(24, 133),
   },
+  bodyMd: {
+    fontFamily: Nunito.MEDIUM,
+    fontSize: 18,
+    lineHeight: lineHeightToPx(18, 144),
+  },
   bodyLg: {
     fontFamily: Nunito.MEDIUM,
     fontSize: 24,
@@ -28,7 +33,7 @@ export const typography = StyleSheet.create({
   bold: {
     fontFamily: Nunito.BOLD,
     fontSize: 18,
-    lineHeight: lineHeightToPx(14, 144),
+    lineHeight: lineHeightToPx(18, 144),
   },
   link: {
     fontFamily: Nunito.REGULAR,
