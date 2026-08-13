@@ -1,6 +1,9 @@
 import { DeliveryPointType } from '@/api/types';
 import { create } from 'zustand';
-type Tabs = 'approximate' | 'exact';
+export enum Tabs {
+  approximate = 'approximate',
+  exact = 'exact',
+}
 type PointsState = {
   from: DeliveryPointType | null;
   to: DeliveryPointType | null;
@@ -47,9 +50,10 @@ export const useCalculationStore = create<PointsState>(set => ({
       from: state.mode === 'from' ? point : state.from,
       to: state.mode === 'to' ? point : state.to,
     })),
-  setTab: () =>
+  setTab: tab =>
     set(state => ({
-      tab: state.tab === 'approximate' ? 'exact' : 'approximate',
+      ...state,
+      tab: tab === Tabs.approximate ? Tabs.approximate : Tabs.exact,
     })),
   resetDeliveryPoints: () =>
     set(() => ({

@@ -1,7 +1,4 @@
-import {
-  CreateDeliveryOrderReceiverAddressDto,
-  CreateDeliveryOrderSenderAddressDto,
-} from '@/api/types';
+import { CreateDeliveryOrderSenderAddressDto } from '@/api/types';
 import { Button, Header, Input } from '@/components';
 import { STEPS } from '@/constants/steps';
 import { SendingStackParamList } from '@/navigation/SendingStack';
@@ -18,14 +15,7 @@ import { FlatList, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './SenderAddress.styles';
 
-// type FormValues = CreateDeliveryOrderPersonDto;
-
-// type Props = {
-//   control: Control<FormValues>;
-// };
-
 type Props = NativeStackScreenProps<SendingStackParamList, 'SenderAddress'>;
-
 interface Field {
   name: keyof CreateDeliveryOrderSenderAddressDto;
   placeholder?: string;
@@ -49,10 +39,10 @@ export const SenderAddress = ({ route }: Props) => {
   const { control, handleSubmit } =
     useForm<CreateDeliveryOrderSenderAddressDto>({
       defaultValues: {
-        street: '',
-        house: '',
-        apartment: '',
-        comment: '',
+        street: 'Новогорожская',
+        house: '24',
+        apartment: '17',
+        comment: 'Комментарий',
       },
     });
 
@@ -96,7 +86,7 @@ export const SenderAddress = ({ route }: Props) => {
                   placeholder={item.placeholder}
                   label={item.label}
                   inputStyle={{
-                    ...typography.placeholder,
+                    ...typography.input,
                     placeholderTextColor: colors.input,
                   }}
                   labelStyle={{

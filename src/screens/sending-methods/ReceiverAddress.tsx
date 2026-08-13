@@ -15,12 +15,6 @@ import { FlatList, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './ReceiverAddress.styles';
 
-// type FormValues = CreateDeliveryOrderPersonDto;
-
-// type Props = {
-//   control: Control<FormValues>;
-// };
-
 type Props = NativeStackScreenProps<SendingStackParamList, 'ReceiverAddress'>;
 
 interface Field {
@@ -34,7 +28,6 @@ const fields: Field[] = [
   { name: 'house', label: 'Дом' },
   { name: 'apartment', label: 'Квартира' },
   { name: 'comment', label: 'Заметка для курьера' },
-  { name: 'isNonContact', label: 'Оставить заказ у двери' },
 ];
 
 export const ReceiverAddress = ({ route }: Props) => {
@@ -47,9 +40,9 @@ export const ReceiverAddress = ({ route }: Props) => {
   const { control, handleSubmit } =
     useForm<CreateDeliveryOrderReceiverAddressDto>({
       defaultValues: {
-        street: '',
-        house: '',
-        apartment: '',
+        street: 'Евдокима Огнева',
+        house: '19',
+        apartment: '40',
         isNonContact: false,
       },
     });

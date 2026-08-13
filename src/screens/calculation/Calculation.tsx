@@ -12,7 +12,7 @@ import { styles } from '@/screens/calculation/Calculation.styles';
 import { CitySuggestions } from '@/screens/calculation/CitySuggestions';
 import { Exact } from '@/screens/calculation/Exact';
 import { SelectField } from '@/screens/calculation/SelectField';
-import { useCalculationStore } from '@/store/useCalculation';
+import { Tabs, useCalculationStore } from '@/store/useCalculation';
 import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
@@ -106,11 +106,13 @@ export const Calculation = () => {
           forwardStep('Step 1');
           setSenderPointId(from.id);
           setReceiverPointId(to.id);
-          setPackageId(packageItem?.id);
+          if (packageItem) {
+            setPackageId(packageItem?.id);
+          }
         }
       });
     }
-    setTab('approximate');
+    setTab(Tabs.approximate);
     reset({ length: 0, width: 0, height: 0, weight: 0 });
   };
 
@@ -249,14 +251,14 @@ export const Calculation = () => {
                 tab === 'approximate' ? styles.activeButton : styles.button
               }
               labelStyle={styles.bottomSheetButtonText}
-              onPress={() => setTab('approximate')}
+              onPress={() => setTab(Tabs.approximate)}
               label="Примерные"
             />
 
             <Button
               style={tab === 'exact' ? styles.activeButton : styles.button}
               labelStyle={styles.bottomSheetButtonText}
-              onPress={() => setTab('exact')}
+              onPress={() => setTab(Tabs.exact)}
               label="Точные"
             />
           </View>

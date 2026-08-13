@@ -13,12 +13,14 @@ export const styles = StyleSheet.create({
   input: {
     width: '100%',
     borderColor: '#B7B7B7',
+    alignItems: 'center',
+    justifyContent: 'center',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     borderWidth: 1,
     height: 40,
     borderRadius: 9999,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   label: {
     ...typography.regular,

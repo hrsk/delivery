@@ -21,7 +21,8 @@ type FormData = {
 
 type FormState = {
   data: FormData;
-  setPackageId: (id: string | undefined) => void;
+  setPackageId: (id: string) => void;
+  setPayer: (payer: Payer) => void;
   setSenderPointId: (id: string) => void;
   setReceiverPointId: (id: string) => void;
   updateOptionType: (data: Partial<FormData['optionType']>) => void;
@@ -137,6 +138,12 @@ export const useOrderForm = create<FormState>(set => ({
         },
       },
     })),
-
+  setPayer: payer =>
+    set(state => ({
+      data: {
+        ...state.data,
+        payer: payer === Payer.receiver ? Payer.sender : Payer.receiver,
+      },
+    })),
   reset: () => set({ data: initialData }),
 }));

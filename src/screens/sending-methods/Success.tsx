@@ -9,10 +9,8 @@ import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './Success.styles';
 
-import { useSteps } from '@/store/useSteps';
 import { useCalculationStore } from '@/store/useCalculation';
-import { getDeliveryStatus } from '@/api/api';
-import { useState } from 'react';
+import { useSteps } from '@/store/useSteps';
 
 type Props = NativeStackScreenProps<SendingStackParamList, 'Success'>;
 

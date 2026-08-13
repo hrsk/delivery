@@ -15,12 +15,6 @@ import { styles } from './Sender.styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SendingStackParamList } from '@/navigation/SendingStack';
 
-// type FormValues = CreateDeliveryOrderPersonDto;
-
-// type Props = {
-//   control: Control<FormValues>;
-// };
-
 type Props = NativeStackScreenProps<SendingStackParamList, 'Sender'>;
 
 interface Field {
@@ -45,10 +39,10 @@ export const Sender = ({ route }: Props) => {
   const currentStep = steps.length;
   const { control, handleSubmit } = useForm<CreateDeliveryOrderPersonDto>({
     defaultValues: {
-      firstname: '',
-      lastname: '',
-      middlename: '',
-      phone: '',
+      firstname: 'Иван',
+      lastname: 'Иванович',
+      middlename: 'Иванов',
+      phone: '+7178387382',
     },
   });
 

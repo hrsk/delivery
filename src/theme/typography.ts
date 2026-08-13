@@ -45,7 +45,7 @@ export const typography = StyleSheet.create({
     fontSize: 14,
     lineHeight: lineHeightToPx(14, 157),
   },
-  placeholder: {
+  input: {
     fontFamily: Nunito.REGULAR,
     fontSize: 20,
     lineHeight: lineHeightToPx(20, 120),
