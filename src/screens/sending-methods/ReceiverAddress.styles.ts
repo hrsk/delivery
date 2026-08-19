@@ -29,4 +29,33 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
   },
+  popover: {
+    width: 240,
+    height: 96,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 8,
+    gap: 4,
+    boxShadow: ' 0 2px 6px 0 rgba(0, 0, 0, 0.15)',
+  },
+  popoverBackground: { opacity: 0 },
+  atDoor: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  popoverContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  popoverDescription: {
+    ...typography.regularSm,
+    color: colors.surface,
+    letterSpacing: 0.01,
+  },
+  popoverTitle: {
+    ...typography.semiBoldSm,
+    color: colors.foreground,
+  },
 });

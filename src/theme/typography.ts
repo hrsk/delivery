@@ -25,6 +25,11 @@ export const typography = StyleSheet.create({
     fontSize: 16,
     lineHeight: lineHeightToPx(16, 150),
   },
+  regularSm: {
+    fontFamily: Nunito.REGULAR,
+    fontSize: 12,
+    lineHeight: lineHeightToPx(12, 133),
+  },
   medium: {
     fontFamily: Nunito.MEDIUM,
     fontSize: 14,
@@ -34,6 +39,11 @@ export const typography = StyleSheet.create({
     fontFamily: Nunito.BOLD,
     fontSize: 18,
     lineHeight: lineHeightToPx(18, 144),
+  },
+  semiBoldSm: {
+    fontFamily: Nunito.SEMI_BOLD,
+    fontSize: 12,
+    lineHeight: lineHeightToPx(12, 133),
   },
   link: {
     fontFamily: Nunito.REGULAR,

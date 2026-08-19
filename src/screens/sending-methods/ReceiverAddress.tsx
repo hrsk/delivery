@@ -1,5 +1,5 @@
 import { CreateDeliveryOrderReceiverAddressDto } from '@/api/types';
-import { Button, Header, Input } from '@/components';
+import { Button, Checkbox, Header, Input } from '@/components';
 import { STEPS } from '@/constants/steps';
 import { SendingStackParamList } from '@/navigation/SendingStack';
 import { StepsProgress } from '@/screens/sending-methods/StepsProgress';
@@ -10,15 +10,29 @@ import { typography } from '@/theme/typography';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { FlatList, Pressable, View } from 'react-native';
+import {
+  FlatList,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Popover, {
+  PopoverMode,
+  PopoverPlacement,
+} from 'react-native-popover-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './ReceiverAddress.styles';
 
 type Props = NativeStackScreenProps<SendingStackParamList, 'ReceiverAddress'>;
 
+interface FormData extends CreateDeliveryOrderReceiverAddressDto {
+  atDoor: boolean;
+}
 interface Field {
-  name: keyof CreateDeliveryOrderReceiverAddressDto;
+  name: keyof FormData;
   placeholder?: string;
   label: string;
 }
@@ -28,24 +42,27 @@ const fields: Field[] = [
   { name: 'house', label: 'Дом' },
   { name: 'apartment', label: 'Квартира' },
   { name: 'comment', label: 'Заметка для курьера' },
+  { name: 'atDoor', label: 'Оставить посылку у двери' },
 ];
 
-export const ReceiverAddress = ({ route }: Props) => {
+export const ReceiverAddress = ({}: Props) => {
   const navigation = useNavigation();
 
   const { steps, backStep, forwardStep } = useSteps();
   const { updateReceiverAddress } = useOrderForm();
 
+  const [showPopover, setShowPopover] = useState(false);
+
   const currentStep = steps.length;
-  const { control, handleSubmit } =
-    useForm<CreateDeliveryOrderReceiverAddressDto>({
-      defaultValues: {
-        street: 'Евдокима Огнева',
-        house: '19',
-        apartment: '40',
-        isNonContact: false,
-      },
-    });
+  const { control, handleSubmit } = useForm<FormData>({
+    defaultValues: {
+      street: 'Евдокима Огнева',
+      house: '19',
+      apartment: '40',
+      comment: '',
+      atDoor: false,
+    },
+  });
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -79,23 +96,70 @@ export const ReceiverAddress = ({ route }: Props) => {
             <Controller
               control={control}
               name={item.name}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input
-                  value={value ? String(value) : ''}
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  placeholder={item.placeholder}
-                  label={item.label}
-                  inputStyle={{
-                    ...typography.placeholder,
-                    placeholderTextColor: colors.input,
-                  }}
-                  labelStyle={{
-                    ...typography.caption,
-                    color: colors.foreground,
-                  }}
-                />
-              )}
+              render={({ field: { onChange, onBlur, value, name } }) =>
+                name !== 'atDoor' ? (
+                  <Input
+                    value={value ? String(value) : ''}
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                    placeholder={item.placeholder}
+                    label={item.label}
+                    inputStyle={{
+                      ...typography.input,
+                      placeholderTextColor: colors.input,
+                    }}
+                    labelStyle={{
+                      ...typography.caption,
+                      color: colors.foreground,
+                    }}
+                  />
+                ) : (
+                  <View style={styles.atDoor}>
+                    <Checkbox
+                      value={value === false ? false : true}
+                      onChange={() => onChange(!value)}
+                      label={item.label}
+                    />
+                    <Popover
+                      placement={PopoverPlacement.TOP}
+                      isVisible={showPopover}
+                      mode={PopoverMode.RN_MODAL}
+                      popoverStyle={styles.popover}
+                      arrowSize={{ width: 24, height: 6 }}
+                      backgroundStyle={styles.popoverBackground}
+                      from={
+                        <TouchableOpacity onPress={() => setShowPopover(true)}>
+                          <MaterialDesignIcons
+                            name="help-circle-outline"
+                            size={20}
+                            color={colors.input}
+                          />
+                        </TouchableOpacity>
+                      }
+                    >
+                      <View style={styles.popoverContent}>
+                        <Text style={styles.popoverTitle}>
+                          Бесконтактная доставка
+                        </Text>
+                        <TouchableOpacity onPress={() => setShowPopover(false)}>
+                          <MaterialDesignIcons
+                            name="close"
+                            color={colors.input}
+                            size={16}
+                          />
+                        </TouchableOpacity>
+                      </View>
+                      <View>
+                        <Text style={styles.popoverDescription}>
+                          Курьер привозит заказ, оставляет его у двери и уходит,
+                          а вам приходит уведомление на телефон о том, что заказ
+                          доставлен
+                        </Text>
+                      </View>
+                    </Popover>
+                  </View>
+                )
+              }
             />
           )}
           keyExtractor={item => item.name}
