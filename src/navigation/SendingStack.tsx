@@ -1,4 +1,5 @@
 import { DeliveryOption } from '@/api/types';
+import { Footer } from '@/components';
 import { SendingMethods } from '@/screens';
 import { PaymentMethods } from '@/screens/sending-methods/PaymentMethods';
 import { Receiver } from '@/screens/sending-methods/Receiver';
@@ -7,11 +8,14 @@ import { Sender } from '@/screens/sending-methods/Sender';
 import { SenderAddress } from '@/screens/sending-methods/SenderAddress';
 import { Success } from '@/screens/sending-methods/Success';
 import { VerifyAndConfirm } from '@/screens/sending-methods/VerifyAndConfirm';
+import { useNavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ReactNode } from 'react';
+import { View } from 'react-native';
 
 export type SendingStackParamList = {
   SendingMethods: {
-    sendingMethods: DeliveryOption[] | undefined;
+    sendingMethods?: DeliveryOption[];
   };
   Receiver: undefined;
   Sender: undefined;
@@ -22,11 +26,39 @@ export type SendingStackParamList = {
   Success: undefined;
 };
 
+type FooterConfig = Partial<
+  Record<
+    keyof SendingStackParamList,
+    {
+      description: string;
+    }
+  >
+>;
+
+const footerConfig: FooterConfig = {
+  Receiver: {
+    description: 'Данные получателя',
+  },
+  Sender: {
+    description: 'Данные отправителя',
+  },
+  ReceiverAddress: {
+    description: 'Адрес получателя',
+  },
+  SenderAddress: {
+    description: 'Адрес отправителя',
+  },
+  PaymentMethods: {
+    description: 'Кто оплачивает доставку?',
+  },
+};
+
 export const SendingStack = createNativeStackNavigator<SendingStackParamList>({
   initialRouteName: 'SendingMethods',
   screenOptions: {
     headerShown: false,
   },
+  layout: ({ children }) => <SendingStackLayout>{children}</SendingStackLayout>,
   screens: {
     SendingMethods: {
       screen: SendingMethods,
@@ -62,3 +94,21 @@ export const SendingStack = createNativeStackNavigator<SendingStackParamList>({
     },
   },
 });
+
+export const SendingStackLayout = ({ children }: { children: ReactNode }) => {
+  const routeName = useNavigationState(
+    state => state.routes[state.index]?.name,
+  );
+
+  const config =
+    routeName && routeName in footerConfig
+      ? footerConfig[routeName as keyof typeof footerConfig]
+      : undefined;
+
+  return (
+    <View style={{ flex: 1 }}>
+      {children}
+      {config && <Footer description={config.description} />}
+    </View>
+  );
+};

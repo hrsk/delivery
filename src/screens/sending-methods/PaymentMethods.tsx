@@ -1,5 +1,5 @@
 import { Payer } from '@/api/types';
-import { Button, Footer, Header, Checkbox } from '@/components';
+import { Button, Checkbox, Header } from '@/components';
 import { STEPS } from '@/constants/steps';
 import { SendingStackParamList } from '@/navigation/SendingStack';
 import { StepsProgress } from '@/screens/sending-methods/StepsProgress';
@@ -14,7 +14,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './PaymentMethods.styles';
-import { useCalculationStore } from '@/store/useCalculation';
 
 type Props = NativeStackScreenProps<SendingStackParamList, 'PaymentMethods'>;
 
@@ -23,7 +22,6 @@ export const PaymentMethods = ({}: Props) => {
 
   const { steps, forwardStep, backStep } = useSteps();
   const { setPayer } = useOrderForm();
-  const { price } = useCalculationStore();
 
   type FormData = {
     payer: Payer | null;
@@ -102,7 +100,6 @@ export const PaymentMethods = ({}: Props) => {
         style={styles.submitButton}
         labelStyle={styles.buttonText}
       />
-      <Footer description="Кто оплачивает доставку?" price={price} />
     </SafeAreaView>
   );
 };
